@@ -1,11 +1,11 @@
 'use strict';
 
 
-module.exports = function (gulp, $, config, deps) {
+module.exports = function (gulp, $, config) {
 
-  var del            = deps['del'];
-  var runSequence    = deps['runSequence'];
-  var handleErrors   = deps['handleErrors'];
+  var del          = require('del');
+  var runSequence  = require('run-sequence');
+  var handleErrors = require('../utils/handleErrors');
 
   var dirs    = config.dirs;
   var globs   = config.globs;
