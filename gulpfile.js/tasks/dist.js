@@ -4,7 +4,6 @@
 module.exports = function (gulp, $, config) {
 
   var del          = require('del');
-  var runSequence  = require('run-sequence');
   var handleErrors = require('../utils/handleErrors');
 
   var dirs    = config.dirs;
@@ -64,8 +63,8 @@ module.exports = function (gulp, $, config) {
   });
 
   // The main distribution task.
-  gulp.task('dist', function (done) {
-    runSequence('dist:clean', [
+  gulp.task('dist', [ 'dist:clean' ], function (done) {
+    gulp.start([
       'dist:views',
       'dist:assets',
       'dist:styles',
