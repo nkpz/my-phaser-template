@@ -26,6 +26,10 @@
  */
 
 
+import levels  from './atlases/levels';
+import buttons from './atlases/buttons';
+
+
 export default {
 
   // - Boot Assets ------------------------------------------------------------
@@ -59,7 +63,7 @@ export default {
     {
       'key': 'buttons',
       'type': 'atlasJSONHash',
-      'atlasURL': 'buttons.json',
+      'atlasData': buttons,
       'textureURL': 'buttons.png'
     },
 
@@ -72,7 +76,7 @@ export default {
     {
       'key': 'levels',
       'type': 'atlasJSONHash',
-      'atlasURL': 'levels.json',
+      'atlasData': levels,
       'textureURL': 'levels.png'
     },
 
