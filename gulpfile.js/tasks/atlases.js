@@ -9,6 +9,12 @@ module.exports = function (gulp, $, config) {
 
   var dirs = config.dirs;
 
+  function pot (n) {
+    var m = 2;
+    while (m < n) m *= 2;
+    return m;
+  }
+
   // Modified version of this recipe:
   // https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-task-steps-per-folder.md
 
@@ -22,16 +28,31 @@ module.exports = function (gulp, $, config) {
   gulp.task('atlas', function () {
     var folders = getFolders(dirs['raw-assets']);
 
-    var tasks = folders.map(function (folder) {
-      var spriteData = gulp.src(path.join(dirs['raw-assets'], folder, '*.png'))
+    var tasks = folders.map(function (name) {
+      var folder = path.join(dirs['raw-assets'], name, '*.png');
+      var spriteData = gulp.src(folder, { read: false })
         .pipe($.spritesmith({
           cssTemplate : 'src/atlas.template',
-          cssName     : folder + '.js',
-          imgName     : folder + '.png',
+          cssName     : name + '.js',
+          imgName     : name + '.png',
           padding     : 8
         }));
 
-      spriteData.img.pipe(gulp.dest(dirs['assets']));
+      spriteData.img
+        .pipe($.gm(function (gmFile, done) {
+          gmFile.size(function (err, size) {
+            var w = pot(size.width);
+            var h = pot(size.height);
+
+            done(null, gmFile
+              .set('colorspace', 'RGB')
+              .background('none')
+              .gravity('northwest')
+              .extent(w, h));
+          });
+        }, { imageMagick: true }))
+        .pipe(gulp.dest(dirs['assets']));
+
       spriteData.css.pipe(gulp.dest(dirs['atlases']));
 
       return spriteData;
