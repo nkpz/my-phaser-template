@@ -35,7 +35,7 @@ export default {
     {
       'key': 'splash-screen',
       'type': 'image',
-      'url': 'images/splash-screen.png'
+      'url': 'splash-screen.png'
     },
 
     {
@@ -46,7 +46,7 @@ export default {
       'frameMax': 2,
       'margin': 8,
       'spacing': 8,
-      'url': 'images/progress-bar.png'
+      'url': 'progress-bar.png'
     }
 
   ],
@@ -59,33 +59,33 @@ export default {
     {
       'key': 'buttons',
       'type': 'atlasJSONHash',
-      'atlasURL': 'atlases/buttons.json',
-      'textureURL': 'images/buttons.png'
+      'atlasURL': 'buttons.json',
+      'textureURL': 'buttons.png'
     },
 
     {
       'key': 'credits',
       'type': 'image',
-      'url': 'images/credits.png'
+      'url': 'credits.png'
     },
 
     {
       'key': 'levels',
       'type': 'atlasJSONHash',
-      'atlasURL': 'atlases/levels.json',
-      'textureURL': 'images/levels.png'
+      'atlasURL': 'levels.json',
+      'textureURL': 'levels.png'
     },
 
     {
       'key': 'phaser',
       'type': 'image',
-      'url': 'images/phaser.png'
+      'url': 'phaser.png'
     },
 
     {
       'key': 'title',
       'type': 'image',
-      'url': 'images/title.png'
+      'url': 'title.png'
     }
 
   ]
