@@ -46,25 +46,27 @@ export default class Preload extends Phaser.State {
   update () {
     // Now, we wait until all sound effects have been decoded into memory,
     // then skip to the Menu screen.
-    if (this.assetsReady && this.allSoundsDecoded)
+    if (this.assetsReady && this.allSoundsDecoded) {
       this.state.start('Menu');
+    }
   }
 
   // --------------------------------------------------------------------------
-
-  getSoundsToDecode () {
-    // If WebAudio is supported in the device, take all files key names to
-    // decode.
-    if ('sfx' in assets && this.webAudioSupported)
-      return assets['sfx'].map(sfx => sfx.key);
-
-    return [];
-  }
 
   showSplashScreen () {
     let splashScreen = new SplashScreen(this.game);
 
     this.load.setPreloadSprite(splashScreen.progressFiller);
+  }
+
+  getSoundsToDecode () {
+    // If WebAudio is supported in the device, take all files key names to
+    // decode.
+    if ('sounds' in assets && this.webAudioSupported) {
+      return assets['sounds'].map(({ key }) => key);
+    }
+
+    return [];
   }
 
   loadGraphicalAssets () {
@@ -77,7 +79,7 @@ export default class Preload extends Phaser.State {
     // sound effects and dequeue each decoded audio key name from the list we
     // took earlier.
     if (this.webAudioSupported) {
-      this.load.pack('sfx', null, assets);
+      this.load.pack('sounds', null, assets);
       this.sound.onSoundDecode.add(this.dequeueDecodedSound, this);
     }
   }
@@ -86,8 +88,9 @@ export default class Preload extends Phaser.State {
     // Take out the key name of the last decoded sound effect from our list.
     var position = this.soundsToDecode.indexOf(key);
 
-    if (position > -1)
+    if (position > -1) {
       this.soundsToDecode.splice(position, 1);
+    }
   }
 
   // --------------------------------------------------------------------------
