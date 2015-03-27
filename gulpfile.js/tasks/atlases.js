@@ -40,7 +40,9 @@ module.exports = function (gulp, $, config) {
           .set('colorspace', 'RGB')
           .background('none')
           .gravity('northwest')
-          .extent(w, h));
+          .extent(w, h)
+          .strip()
+          .quality(100));
       });
     }, { imageMagick: true });
   }
