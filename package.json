@@ -33,7 +33,6 @@
     "gulp.spritesmith": "^3.3.1",
     "jshint-stylish": "^1.0.0",
     "main-bower-files": "^2.4.1",
-    "merge-stream": "^0.1.7",
     "postcss": "^4.0.1",
     "require-dir": "^0.3.0"
   },
