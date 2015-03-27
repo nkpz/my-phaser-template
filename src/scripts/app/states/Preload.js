@@ -78,7 +78,7 @@ export default class Preload extends Phaser.State {
     // Here, we tell Phaser that, if there's WebAudio support, to load all
     // sound effects and dequeue each decoded audio key name from the list we
     // took earlier.
-    if (this.webAudioSupported) {
+    if ('sounds' in assets && this.webAudioSupported) {
       this.load.pack('sounds', null, assets);
       this.sound.onSoundDecode.add(this.dequeueDecodedSound, this);
     }
