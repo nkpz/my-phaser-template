@@ -35,7 +35,7 @@
     "main-bower-files": "^2.4.1",
     "merge-stream": "^0.1.7",
     "postcss": "^4.0.1",
-    "require-dir": "^0.2.0"
+    "require-dir": "^0.3.0"
   },
   "scripts": {
     "dist": "gulp dist",
